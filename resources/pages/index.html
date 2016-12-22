@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+__ INdex Title__
+{% endblock %}
+
+{% block content %}
+
+
+<ul>
+    {% for cat in cats %}
+    <li><a href="/{{cat.slug}}">{{cat.name}}</a></li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

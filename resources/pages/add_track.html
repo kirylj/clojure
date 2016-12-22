@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if sess.identity.login %}
+
+<form action="" method="post">
+    <select name="category_id" >
+        {% for cat in cats %}
+        <option value="{{cat.id}}">{{cat.name}}</option>
+        {% endfor %}
+
+    </select><br />
+    <input type="text" name="title" placeholder="Title"><br />
+    <input type="text" name="author" placeholder="Author"><br />
+    <br />
+    Lyrics : <br />
+    <textarea rows="5" cols="50" name="lyrics" placeholder="Enter lyrics here..." >
+
+    </textarea>
+    {% csrf-field %}
+    <br />
+
+    <button type="submit">Add track</button>
+</form>
+
+{% endif %}
+
+{% endblock %}

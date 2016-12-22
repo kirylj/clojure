@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+__ INdex Title__
+{% endblock %}
+
+{% block content %}
+
+
+
+    {% for track in tracks %}
+        <table>
+            <tr><td>Title</td><td>{{track.title}}</td></tr>
+            <tr><td>Author</td><td>{{track.author}}</td></tr>
+            <tr><td>Lyrics</td><td><a href="/track/{{track.id}}">Go to lyrics</a></td></tr>
+            <tr><td>Sender</td><td>{{track.name}}</td></tr>
+        </table></br>
+    {% endfor %}
+
+
+
+{% endblock %}

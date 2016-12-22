@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>{% block title %}__TEST TITLE__{% endblock %}</title>
+</head>
+<body>
+
+<a href="/">Index</a>
+
+<a href="/tracks">Tracks</a>
+{% if error_message %}
+<h1><font color="red">{{error_message}}</font></h1>
+{% endif %}
+
+
+
+{% if sess.identity.login %}
+<a href="/add_track">Add track</a>
+<a href="/logout">Log out</a>
+
+{% else %}
+
+
+<a href="/login">Log in</a>
+<a href="/signup">Sign Up</a>
+
+
+<h3>Please log in</h3>
+{% endif %}
+
+
+{% block content %}
+
+{% endblock %}
+
+<h3>Counter: {{counter}}</h3>
+
+<a href="/log-flush">Flush logs</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+__Category Title__
+{% endblock %}
+
+{% block content %}
+
+<h1>Category {{ cat.name }}</h1>
+
+{% for track in tracks %}
+<table>
+    <tr><td>Title</td><td>{{track.title}}</td></tr>
+    <tr><td>Author</td><td>{{track.author}}</td></tr>
+    <tr><td>Lyrics</td><td><a href="/track/{{track.id_2}}">Go to lyrics</a></td></tr>
+    <tr><td>Sender</td><td>{{track.name_2}}</td></tr>
+</table></br>
+
+<br/>
+{% endfor %}
+
+
+{% endblock %}
