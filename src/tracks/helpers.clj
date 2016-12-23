@@ -60,3 +60,26 @@
   (when (= 0 (mod @global-counter flush-every))
     (logger-flush))
   )
+
+;DSL macros
+(defn join-str
+  [sep coll]
+  (apply str (interpose sep coll)))
+
+(defn content-tag
+  ([tag]
+    (content-tag tag {} ""))
+  ([tag attrs & contents]
+    (if-not (map? attrs)
+            (apply content-tag tag {} (cons attrs contents))
+            (let [tagname (name tag)
+                  attribute-strings (map (fn [[k v]] (str (name k) "=\"" (name v) "\"")) attrs)
+                  attribute-string (join-str " " attribute-strings)
+                  flatten-content (fn [c] (if (seq? c) (apply content-tag c) c))
+                  body (join-str " " (map flatten-content contents))]
+              (format "<%s %s>%s</%s>" tagname attribute-string body tagname)))))
+
+
+(defmacro markup
+  [& elements]
+  `(apply str (map (partial apply content-tag) '~elements)))
