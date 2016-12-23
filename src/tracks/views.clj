@@ -167,5 +167,5 @@
             (li "Mamajka Nascia")
             (li "Kulik Arciom")
             (li "Jurkou Kiryl"))
-        (p {class content title "stop pointing at me!"}
-           Execution of our lablatory work 3 DSL )))))
+        (p {class content title "Happy New Year!"}
+           Example of clojure-to-html DSL )))))
